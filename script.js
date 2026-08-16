@@ -55,12 +55,17 @@ function renderTasks() {
     });
 
     if (filteredTasks.length === 0) {
+        const message =
+            tasks.length === 0
+                ? "No tasks yet. Add your first task above."
+                : "No tasks match this filter.";
+
         taskList.innerHTML = `
             <div class="empty-state">
-                <p>No tasks found.</p>
+                <p>${message}</p>
             </div>
         `;
-
+        
         updateTaskCount();
         return;
     }
