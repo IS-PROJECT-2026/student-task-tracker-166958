@@ -97,6 +97,22 @@ body {
     padding: 2rem;
 }
 
+.task-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: #fafafa;
+}
+
+.task-card h3 {
+    margin-bottom: 0.5rem;
+}
+
+.task-card p {
+    margin-bottom: 0.25rem;
+}
+
 @media (max-width: 600px) {
     .section-heading {
         flex-direction: column;
