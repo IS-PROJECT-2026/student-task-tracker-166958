@@ -45,17 +45,90 @@ function renderTasks() {
 
         taskCard.className = "task-card";
 
+        if (task.completed) {
+            taskCard.classList.add("completed");
+        }
+
         taskCard.innerHTML = `
             <h3>${task.title}</h3>
-            <p><strong>Subject:</strong> ${task.subject}</p>
-            <p><strong>Due:</strong> ${task.dueDate}</p>
-            <p><strong>Priority:</strong> ${task.priority}</p>
+
+            <p>
+                <strong>Subject:</strong>
+                ${task.subject}
+            </p>
+
+            <p>
+                <strong>Due:</strong>
+                ${task.dueDate}
+            </p>
+
+            <p>
+                <strong>Priority:</strong>
+                ${task.priority}
+            </p>
+
+            <div class="task-actions">
+
+                <button
+                    class="complete-button"
+                    data-id="${task.id}"
+                >
+                    ${task.completed ? "Undo" : "Complete"}
+                </button>
+
+                <button
+                    class="delete-button"
+                    data-id="${task.id}"
+                >
+                    Delete
+                </button>
+
+            </div>
         `;
 
         taskList.appendChild(taskCard);
     });
 
     updateTaskCount();
+}
+
+taskList.addEventListener("click", function (event) {
+    const taskId = Number(event.target.dataset.id);
+
+    if (!taskId) {
+        return;
+    }
+
+    if (event.target.classList.contains("complete-button")) {
+        toggleTaskCompletion(taskId);
+    }
+
+    if (event.target.classList.contains("delete-button")) {
+        deleteTask(taskId);
+    }
+});
+
+function toggleTaskCompletion(taskId) {
+    tasks = tasks.map(function (task) {
+        if (task.id === taskId) {
+            return {
+                ...task,
+                completed: !task.completed
+            };
+        }
+
+        return task;
+    });
+
+    renderTasks();
+}
+
+function deleteTask(taskId) {
+    tasks = tasks.filter(function (task) {
+        return task.id !== taskId;
+    });
+
+    renderTasks();
 }
 
 taskForm.addEventListener("submit", function (event) {
