@@ -2,7 +2,10 @@ const taskForm = document.getElementById("task-form");
 const taskList = document.getElementById("task-list");
 const taskCount = document.getElementById("task-count");
 
+const filterButtons = document.querySelectorAll(".filter-button");
+
 let tasks = [];
+let currentFilter = "all";
 
 function updateTaskCount() {
     const count = tasks.length;
@@ -29,10 +32,22 @@ function createTask(title, subject, dueDate, priority) {
 function renderTasks() {
     taskList.innerHTML = "";
 
-    if (tasks.length === 0) {
+    const filteredTasks = tasks.filter(function (task) {
+        if (currentFilter === "completed") {
+            return task.completed;
+        }
+
+        if (currentFilter === "pending") {
+            return !task.completed;
+        }
+
+        return true;
+    });
+
+    if (filteredTasks.length === 0) {
         taskList.innerHTML = `
             <div class="empty-state">
-                <p>No tasks yet. Add your first task above.</p>
+                <p>No tasks found.</p>
             </div>
         `;
 
@@ -40,7 +55,7 @@ function renderTasks() {
         return;
     }
 
-    tasks.forEach(function (task) {
+    filteredTasks.forEach(function (task) {
         const taskCard = document.createElement("article");
 
         taskCard.className = "task-card";
@@ -106,6 +121,20 @@ taskList.addEventListener("click", function (event) {
     if (event.target.classList.contains("delete-button")) {
         deleteTask(taskId);
     }
+});
+
+filterButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+        currentFilter = button.dataset.filter;
+
+        filterButtons.forEach(function (item) {
+            item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        renderTasks();
+    });
 });
 
 function toggleTaskCompletion(taskId) {
