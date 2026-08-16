@@ -4,6 +4,14 @@ const taskCount = document.getElementById("task-count");
 
 const filterButtons = document.querySelectorAll(".filter-button");
 
+const totalTasks = document.getElementById("total-tasks");
+const completedTasks = document.getElementById("completed-tasks");
+const pendingTasks = document.getElementById("pending-tasks");
+const progressPercentage =
+    document.getElementById("progress-percentage");
+const progressBar =
+    document.getElementById("progress-bar");
+
 let tasks = [];
 let currentFilter = "all";
 
@@ -30,6 +38,8 @@ function createTask(title, subject, dueDate, priority) {
 }
 
 function renderTasks() {
+    updateProgress();
+
     taskList.innerHTML = "";
 
     const filteredTasks = tasks.filter(function (task) {
@@ -136,6 +146,27 @@ filterButtons.forEach(function (button) {
         renderTasks();
     });
 });
+
+function updateProgress() {
+    const total = tasks.length;
+
+    const completed = tasks.filter(function (task) {
+        return task.completed;
+    }).length;
+
+    const pending = total - completed;
+
+    const percentage =
+        total === 0
+            ? 0
+            : Math.round((completed / total) * 100);
+
+    totalTasks.textContent = total;
+    completedTasks.textContent = completed;
+    pendingTasks.textContent = pending;
+    progressPercentage.textContent = `${percentage}%`;
+    progressBar.style.width = `${percentage}%`;
+}
 
 function toggleTaskCompletion(taskId) {
     tasks = tasks.map(function (task) {
