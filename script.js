@@ -34,6 +34,7 @@ function createTask(title, subject, dueDate, priority) {
 
     tasks.push(task);
 
+    saveTasks();
     renderTasks();
 }
 
@@ -185,6 +186,7 @@ function toggleTaskCompletion(taskId) {
         return task;
     });
 
+    saveTasks();
     renderTasks();
 }
 
@@ -193,6 +195,7 @@ function deleteTask(taskId) {
         return task.id !== taskId;
     });
 
+    saveTasks();
     renderTasks();
 }
 
@@ -213,4 +216,17 @@ taskForm.addEventListener("submit", function (event) {
     taskForm.reset();
 });
 
+function saveTasks() {
+    localStorage.setItem("studentTasks", JSON.stringify(tasks));
+}
+
+function loadTasks() {
+    const savedTasks = localStorage.getItem("studentTasks");
+
+    if (savedTasks) {
+        tasks = JSON.parse(savedTasks);
+    }
+}
+
+loadTasks();
 renderTasks();
