@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Task Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <h1>Student Task Tracker</h1>
+            <p>Keep track of your assignments, quizzes, and other academic tasks.</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="task-form-section">
+            <h2>Add a Task</h2>
+
+            <form id="task-form">
+
+                <div class="form-group">
+                    <label for="task-title">Task Title</label>
+                    <input
+                        type="text"
+                        id="task-title"
+                        name="task-title"
+                        placeholder="e.g. Mathematics Assignment"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="task-subject">Subject</label>
+                    <input
+                        type="text"
+                        id="task-subject"
+                        name="task-subject"
+                        placeholder="e.g. Mathematics"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="task-date">Due Date</label>
+                    <input
+                        type="date"
+                        id="task-date"
+                        name="task-date"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="task-priority">Priority</label>
+
+                    <select id="task-priority" name="task-priority">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="primary-button">
+                    Add Task
+                </button>
+
+            </form>
+        </section>
+
+
+        <section class="tasks-section">
+
+            <div class="section-heading">
+                <h2>My Tasks</h2>
+                <span id="task-count">0 tasks</span>
+            </div>
+
+            <div id="task-list">
+
+                <div id="empty-state" class="empty-state">
+                    <p>No tasks yet. Add your first task above.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>Student Task Tracker</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
