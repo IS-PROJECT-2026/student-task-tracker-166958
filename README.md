@@ -25,7 +25,7 @@ A simple web application that helps students organize and track their academic t
 
 ## Live Demo
 
-[Student Task Tracker](PASTE-LIVE-GITHUB-PAGES-URL-HERE)
+[Student Task Tracker] https://is-project-2026.github.io/student-task-tracker-166958/
 
 ## How to Run Locally
 
