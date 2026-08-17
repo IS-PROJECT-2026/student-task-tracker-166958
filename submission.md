@@ -2,16 +2,15 @@
 
 ## 1. Student Details
 
-- **Full Name:** [Your Name Here]
-- **GitHub Username:** [Your Username Here]
-- **Email:** [Your Student Email Here]
+- **Full Name:** Michelle Mutuma
+- **GitHub Username:** Michelle-Mutuma
+- **Email:** michelle.mutuma@strathmore.edu
 
 ---
 
 ## 2. Deployed Project Link
 
-- **Live GitHub Pages URL:** [Paste your live deployment link here]
-  *(Example: https://is-project-2026.github.io/hospital-management-138141/)*
+- **Live GitHub Pages URL:** https://is-project-2026.github.io/student-task-tracker-166958/
 
 ---
 
@@ -23,31 +22,23 @@
 
 ### A. Your Best Commit
 
-Paste the URL of the commit in your history that you think best demonstrates clean conventional commit practice (good type tag, clear subject, meaningful body or footer).
-
-- **Commit URL:** [Paste the full GitHub commit URL here]
-- **Why this one?** [1–2 sentences explaining what makes this commit well-structured]
+- **Commit URL:** https://github.com/IS-PROJECT-2026/student-task-tracker-166958/commit/38874f2
+- **Why this one?** I chose this commit because it follows the Conventional Commits format with a clear `feat:` type and a concise subject that accurately describes the change. It represents a focused application feature: persisting student tasks locally.
 
 ### B. A Mistake or Struggle
 
-Link to a commit, PR, or issue where something went wrong — a bad commit message you had to fix, a branch you had to delete and recreate, a PR that needed rework, or a deployment that broke. 
-
-- **Link to the evidence:** [Paste URL here]
-- **What happened and how did you recover?** [2–3 sentences]
+- **Link to the evidence:** https://github.com/IS-PROJECT-2026/student-task-tracker-166958/commit/4ab50a1
+- **What happened and how did you recover?** During the first attempt to create a merge conflict, I accidentally created the feature branch from the same point as the other branch, so Git performed a fast-forward merge instead of producing a conflict. I identified the problem from the `Fast-forward` output, reset `main` to the common ancestor, recreated the divergent branches correctly, and then successfully produced and resolved a real content conflict. The final resolution was recorded in commit `f44c438`.
 
 ### C. A Pull Request You're Proud Of
 
-Paste the URL of the PR that best shows your self-review process — one where the description is clear, the issue linkage is correct, and the diff tells a coherent story.
-
-- **PR URL:** [Paste the full GitHub PR URL here]
-- **What did you check before merging?** [1–2 sentences on what you reviewed]
+- **PR URL:** https://github.com/IS-PROJECT-2026/student-task-tracker-166958/pull/16
+- **What did you check before merging?** I reviewed the changed files and diff to confirm that task persistence was implemented correctly, checked that the change was focused on the issue requirements, and verified that the application continued to work before the pull request was merged.
 
 ### D. One Thing You Would Do Differently
 
-If you had to restart this project from scratch with everything you know now, name one specific workflow decision you would change (not a code change — a Git/project management decision).
-
-- **What would you change?** [1–2 sentences]
-- **Link to the evidence of the original decision:** [Paste URL to the commit, branch, or issue that shows the decision you'd redo]
+- **What would you change?** I would plan the Git workflow and evidence requirements before starting the implementation, especially the branch structure, screenshots, and merge-conflict scenarios. This would reduce unnecessary branch corrections and make the evidence collection more systematic.
+- **Link to the evidence of the original decision:** https://github.com/IS-PROJECT-2026/student-task-tracker-166958/branches
 
 ---
 
@@ -60,30 +51,31 @@ Demonstrate your workflow mechanics by embedding your screenshots below.
 ### A. Milestones and Issues
 *Provide a screenshot showing your active milestone(s) and the granular tracking issues linked directly to them.*
 
-[PASTE YOUR MILESTONE SCREENSHOT DIRECTLY HERE]
+![Milestones](evidence/milestones.png)
+![Issues](evidence/issues.png)
 
-* **Caption:** [Write a brief sentence describing your milestones here]
+* **Caption:** The project milestone organizes the Student Task Tracker work into granular issues covering project setup, task management, filtering, progress tracking, responsive design, persistence, validation, deployment, and documentation.
 
 ### B. Project Board
 *Provide a screenshot of your GitHub Project Board with your issues organized dynamically across columns (To Do, In Progress, Done).*
 
-[PASTE YOUR PROJECT BOARD SCREENSHOT DIRECTLY HERE]
+![Project Board](evidence/projectboard.png)
 
-* **Caption:** [Write a brief sentence describing your board state here]
+* **Caption:** The project board provides a visual workflow for tracking development tasks across To Do, In Progress, and Done, allowing project progress to be monitored throughout implementation.
 
 ### C. Branching Architecture
 *Provide a screenshot showing your local or remote Git branch list, highlighting your use of conventional, issue-linked naming patterns (e.g., `feat/`, `fix/`, `style/`).*
 
-[PASTE YOUR BRANCHING SCREENSHOT DIRECTLY HERE]
+![Branching architecture](evidence/branching-arch.png)
 
-* **Caption:** [Write a brief sentence describing your branch list here]
+* **Caption:** The repository uses conventional, issue-linked branch naming patterns including `feat/`, `fix/`, `style/`, and `docs/` branches. Feature development was separated from `main` and merged through the project's pull-request workflow.
 
 ### D. Pull Requests & Traceability
 *Provide a screenshot of a completed or open Pull Request (PR) on GitHub that clearly shows it is linked to a related development issue.*
 
-[PASTE YOUR PULL REQUEST SCREENSHOT DIRECTLY HERE]
+![Pull request #16](evidence/pull-req.png)
 
-* **Caption:** [Write a brief sentence describing your PR and what issue it closes]
+* **Caption:** PR #16 merged the `feat/7-persist-tasks` branch into `main`. The pull request provides traceability between the development branch, the persistence feature, its implementation commit, and the related development issue.
 
 ---
 
@@ -95,54 +87,51 @@ You must engineer **three merge conflicts**, each triggered by a **different cau
 
 ---
 
+Three merge conflicts were deliberately engineered using different causes. Each conflict was reproduced locally and resolved.
+
 ### Conflict 1 — Full Chronology
 
-**What cause did you use?** [Name the type of conflict cause from the lecture]
+**What cause did you use?** Content conflict — both branches modified the same line of the same file.
 
 #### Step 1: Generating the Clash
-*Screenshot showing the merge attempt and the conflict warning.*
 
-[PASTE SCREENSHOT OF ATTEMPTED MERGE / TERMINAL WARNING HERE]
-
-* **Caption:** [Describe which two branches collided and the warning received]
+* **Caption:** The `conflict/1-main-change` and `conflict/1-feature-change` branches modified the same line in `conflict-demo.txt`. Git reported a content conflict when the feature branch was merged.
 
 #### Step 2: Inside the Code Editor (Conflict Markers)
-*Screenshot showing the raw, unresolved conflict markers (`<<<<<<< HEAD`, `=======`, `>>>>>>>`) in your editor.*
 
-[PASTE SCREENSHOT OF RAW CONFLICT MARKERS HERE]
-
-* **Caption:** [Explain what caused the dispute and your reasoning for the final version]
+* **Caption:** Git inserted `<<<<<<< HEAD`, `=======`, and `>>>>>>>` markers to identify the competing versions. The conflicting content was reviewed and combined into the final resolved version.
 
 #### Step 3: Resolution & Clean Merge
-*Screenshot of your clean Git history or completed PR showing the conflict was resolved and merged.*
 
-[PASTE SCREENSHOT OF CLEAN RESOLUTION HERE]
+* **Caption:** The conflict was resolved and committed with the message `merge: resolve conflict in demo file`.
 
-* **Caption:** [Describe the final state after resolution]
+**Resolution commit:** https://github.com/IS-PROJECT-2026/student-task-tracker-166958/commit/f44c438
+
+![Conflict 1](evidence/conflict-1.png)
 
 ---
 
 ### Conflict 2 — Different Cause
 
-**What cause did you use?** [Name the type of conflict cause — must be different from Conflict 1]
+**What cause did you use?** Modify/delete conflict — one branch modified `conflict-2.txt` while the other branch deleted it.
 
-**Why does this cause trigger a conflict?** [1–2 sentences explaining the mechanism]
+* **Caption:** Git reported `deleted by them: conflict-2.txt`, demonstrating a modify/delete conflict. The modified version was retained during resolution.
 
-[PASTE SCREENSHOT OF CONFLICT MARKERS FOR CONFLICT 2 HERE]
+**Resolution commit:** https://github.com/IS-PROJECT-2026/student-task-tracker-166958/commit/205bef1
 
-* **Caption:** [Brief description of the conflicting branches and file]
+![Conflict 2](evidence/conflict-2.png)
 
 ---
 
 ### Conflict 3 — Different Cause
 
-**What cause did you use?** [Name the type of conflict cause — must be different from Conflicts 1 and 2]
+**What cause did you use?** Rename/rename conflict — both branches renamed the same original file to different filenames.
 
-**Why does this cause trigger a conflict?** [1–2 sentences explaining the mechanism]
+* **Caption:** Both branches independently renamed `conflict-3.txt` to different filenames, producing a rename/rename conflict. The competing names were resolved into a single final file.
 
-[PASTE SCREENSHOT OF CONFLICT MARKERS FOR CONFLICT 3 HERE]
+**Resolution commit:** https://github.com/IS-PROJECT-2026/student-task-tracker-166958/commit/eebebfb
 
-* **Caption:** [Brief description of the conflicting branches and file]
+![Conflict 3](evidence/conflict-3.png)
 
 ---
 ##
