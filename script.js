@@ -208,6 +208,15 @@ taskForm.addEventListener("submit", function (event) {
     const priority = document.getElementById("task-priority").value;
 
     if (!title || !subject || !dueDate) {
+        alert("Please complete all required fields.");
+        return;
+    }
+    
+    const today = new Date().toISOString().split("T")[0];
+    console.log("Due Date:", dueDate, "Today:", today);
+
+    if (dueDate < today) {
+        alert("Due date cannot be in the past.");
         return;
     }
 
